@@ -9,7 +9,10 @@ class PhoneBook
 {
   private:
     int len;
-  public:
+    int oldest;
+    
+    public:
+    PhoneBook();
     Contact Contact[8];
     int       getLen();
     void      setLen(int len);

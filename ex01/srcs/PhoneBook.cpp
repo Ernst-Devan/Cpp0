@@ -4,6 +4,13 @@
 #include <string>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include "stdlib.h"
+
+PhoneBook::PhoneBook()
+{
+  len = 0;
+  oldest = 0;
+}
 
 int PhoneBook::getLen()
 {
@@ -17,7 +24,11 @@ void  PhoneBook::setLen(int new_len)
 
 void PhoneBook::addContact()
 {  if (len == 8)
-    Contact[7].setContact();
+  {
+    if (oldest == 8)
+      oldest = 0;
+    Contact[oldest++].setContact();
+  }
   else
   {
     Contact[len].setContact();
@@ -45,27 +56,30 @@ int PhoneBook::displayContact()
 
 int  PhoneBook::selectContact()
 {
-  int input;
   std::string str;
+  int index;
 
   std::cout << "Enter valid index of the contact: ";
-  std::cin >> input;
-  if (std::cin.eof() || std::cin.fail())
-    return (1);
-  std::cin.ignore();
-  if (input > 0 && input <= len)
+
+  while (getline(std::cin, str))
   {
-    std::cout << "|-------------------------------------------|" << std::endl;
-    std::cout << "First Name: " <<Contact[input - 1].getFname() << std::endl;
-    std::cout << "Last Name: "<<Contact[input - 1].getLname() << std::endl;
-    std::cout << "Nickname: "<<Contact[input - 1].getNickname() << std::endl;
-    std::cout << "Number: "<<Contact[input - 1].getNumber() << std::endl;
-    std::cout << "Secret: "<<Contact[input - 1].getSecret() << std::endl;
-    std::cout << "|-------------------------------------------|" << std::endl;
+    index = std::atoi((char *) str.c_str());
+    
+    if (str.length() == 1 && index > 0 && index <= len)
+    {
+      std::cout << "|-------------------------------------------|" << std::endl;
+      std::cout << "First Name: " <<Contact[index - 1].getFname() << std::endl;
+      std::cout << "Last Name: "<<Contact[index - 1].getLname() << std::endl;
+      std::cout << "Nickname: "<<Contact[index - 1].getNickname() << std::endl;
+      std::cout << "Number: "<<Contact[index - 1].getNumber() << std::endl;
+      std::cout << "Secret: "<<Contact[index - 1].getSecret() << std::endl;
+      std::cout << "|-------------------------------------------|" << std::endl;
+    }
+    else
+      selectContact();
+    return (0);
   }
-  else
-    selectContact();
-  return (0);
+  return (1);
 }
 
 int PhoneBook::calculateSetw(std::string str)
