@@ -84,10 +84,14 @@ int Contact::setSecret() {
   secret = truncString(secret);
 }
 
-std::string Contact::getSecret() { return (secret); }
+std::string Contact::getSecret() 
+{ 
+  return (secret); 
+}
 
 std::string Contact::truncString(std::string str) {
-  if (str.length() > 9) {
+  if (str.length() > 9) 
+  {
     str.resize(9);
     str.append(".");
   }

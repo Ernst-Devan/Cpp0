@@ -25,7 +25,7 @@ class Contact
   std::string getNumber();
   int         setSecret();
   std::string getSecret();
-  std::string truncString(std::string str);
+  static std::string truncString(std::string str);
 };
 
 #endif

@@ -8,7 +8,7 @@ SRCS := Account.cpp \
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 
-CFLAGS := -std=c++98 -MMD -MP
+CFLAGS := -Wall -Werror -Wextra -std=c++98 -MMD -MP
 CC := c++
 
 all: $(NAME)

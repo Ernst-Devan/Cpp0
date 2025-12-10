@@ -41,7 +41,7 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY : clean fclean all re force
+.PHONY : clean fclean all re
 
 -include $(DEPS)
 

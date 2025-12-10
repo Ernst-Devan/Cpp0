@@ -42,10 +42,10 @@ int PhoneBook::displayContact()
   std::cout << "|Index     |First Name|Last Name |Secret    |" << std::endl;
   for (int i = 0; i < getLen(); i++)
   {
-    std::cout << "|"<< i + 1 << std::setw(10);
-    std::cout << "|" << Contact[i].truncString(Contact[i].getFname()) << std::setw(calculateSetw(Contact[i].getFname()));
-    std::cout << "|" << Contact[i].truncString(Contact[i].getLname()) << std::setw(calculateSetw(Contact[i].getLname()));
-    std::cout << "|" << Contact[i].truncString(Contact[i].getSecret()) << std::setw(calculateSetw(Contact[i].getSecret())) << "|"  << std::endl;
+    std::cout << "|" <<std::right<< std::setw(10) << i + 1;
+    std::cout << "|" << std::right <<std::setw(10) << Contact::truncString(Contact[i].getFname());
+    std::cout << "|" << std::right <<std::setw(10) << Contact::truncString(Contact[i].getLname());
+    std::cout << "|" << std::right<< std::setw(10) << Contact::truncString(Contact[i].getSecret())  << "|"  << std::endl;
   }
   std::cout << "|-------------------------------------------|" << std::endl;
   if (len > 0)
@@ -80,11 +80,6 @@ int  PhoneBook::selectContact()
     return (0);
   }
   return (1);
-}
-
-int PhoneBook::calculateSetw(std::string str)
-{
-    return (11 - str.length());
 }
 
 
