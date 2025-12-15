@@ -74,7 +74,7 @@ int Contact::setNumber() {
 std::string Contact::getNumber() { return (number); }
 
 int Contact::setSecret() {
-  std::cout << "Secret is: :";
+  std::cout << "Secret is: ";
   while (getline(std::cin, secret)) {
     if (secret.length() == 0)
       setSecret();

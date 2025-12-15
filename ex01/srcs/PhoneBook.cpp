@@ -60,7 +60,6 @@ int  PhoneBook::selectContact()
   int index;
 
   std::cout << "Enter valid index of the contact: ";
-
   while (getline(std::cin, str))
   {
     index = std::atoi((char *) str.c_str());
@@ -74,10 +73,10 @@ int  PhoneBook::selectContact()
       std::cout << "Number: "<<Contact[index - 1].getNumber() << std::endl;
       std::cout << "Secret: "<<Contact[index - 1].getSecret() << std::endl;
       std::cout << "|-------------------------------------------|" << std::endl;
+      return (0);
     }
     else
-      selectContact();
-    return (0);
+      std::cout << "Enter valid index of the contact: ";
   }
   return (1);
 }
